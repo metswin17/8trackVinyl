@@ -1,39 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-
-
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>8trackVinyl</title>
 
+  <link rel="stylesheet" href="css/style.css">
 
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
 </head>
-
-
-
 
 <body>
 
+<header>
+  <h1 style="text-align:center;">8trackVinyl</h1>
+</header>
 
+<main>
 
+  <!-- Carousel -->
+  <div class="swiper">
+    <div class="swiper-wrapper">
 
+      <div class="swiper-slide"><img src="img/aleksey.jpg"></div>
+      <div class="swiper-slide"><img src="img/mert.jpg"></div>
+      <div class="swiper-slide"><img src="img/tuyen.jpg"></div>
+      <div class="swiper-slide"><img src="img/brett.jpg"></div>
+      <div class="swiper-slide"><img src="img/andrey.jpg"></div>
+      <div class="swiper-slide"><img src="img/jon.jpg"></div>
+      <div class="swiper-slide"><img src="img/mack.jpg"></div>
+      <div class="swiper-slide"><img src="img/oleg.jpg"></div>
+      <div class="swiper-slide"><img src="img/tara.jpg"></div>
+      <div class="swiper-slide"><img src="img/juliana.jpg"></div>
+      <div class="swiper-slide"><img src="img/lahiru.jpg"></div>
+      <div class="swiper-slide"><img src="img/ryan.jpg"></div>
+      <div class="swiper-slide"><img src="img/anne.jpg"></div>
+      <div class="swiper-slide"><img src="img/linh.jpg"></div>
+      <div class="swiper-slide"><img src="img/mike.jpg"></div>
+      <div class="swiper-slide"><img src="img/andras.jpg"></div>
+      <div class="swiper-slide"><img src="img/8trac.jpg"></div>
+      <div class="swiper-slide"><img src="img/8track.jpg"></div>
+      <div class="swiper-slide"><img src="img/NatK.jpg"></div>
+      <div class="swiper-slide"><img src="img/arman.jpg"></div>
+      <div class="swiper-slide"><img src="img/car8.jpg"></div>
+      <div class="swiper-slide"><img src="img/karly.jpg"></div>
+      <div class="swiper-slide"><img src="img/craig.jpg"></div>
+      <div class="swiper-slide"><img src="img/ryan2.jpg"></div>
+      <div class="swiper-slide"><img src="img/mick.jpg"></div>
 
+    </div>
 
+    <!-- controls -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
 
+  </div>
 
-
-
-
-
-
-
-
-
-
+  <section class="battle">
+    <div class="song original">
+      <img id="original-img" src="img/NatK.jpg" alt="Original Artist">
+      <h3>Original</h3>
+    </div>
   
+    <div class="song cover">
+      <img id="cover-img" src="img/ella.jpg" alt="Cover Artist">
+      <h3>Cover</h3>
+    </div>
+  </section>
+
+</main>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<script>
+new Swiper('.swiper', {
+  loop: true,
+  centeredSlides: true,
+  slidesPerView: 3,
+
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false
+  },
+
+  effect: 'coverflow',
+
+  coverflowEffect: {
+    rotate: 60,
+    stretch: 0,
+    depth: 200,
+    modifier: 1,
+    slideShadows: false
+  },
+
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev'
+  },
+
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true
+  }
+});
+</script>
+
 </body>
-
-
 </html>

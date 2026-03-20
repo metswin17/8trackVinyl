@@ -1,0 +1,54 @@
+body{
+  font-family: Arial, sans-serif;
+}
+
+.swiper{
+  width:800px;
+  margin:50px auto;
+}
+
+.swiper-slide{
+  display:flex;
+  justify-content:center;
+}
+
+.swiper-slide img{
+  width:250px;
+  border-radius:50%;
+}
+
+@keyframes spinRecord{
+   from{ transform:rotate(0deg); }
+  to{ transform:rotate(450deg); }
+}
+
+.swiper-slide-active img{
+  animation:spinRecord 4s linear infinite;
+}
+
+.battle {
+  display: flex;
+  justify-content: center;      /* center horizontally */
+  align-items: center;          /* align vertically */
+  gap: 80px;                    /* space between Original & Cover */
+  margin-top: 60px;
+}
+
+.battle .song img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.battle .song img:hover {
+  transform: scale(1.05);
+}
+
+.battle .song h3 {
+  text-align: center;
+  margin-top: 10px;
+}
