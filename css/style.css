@@ -52,3 +52,25 @@ body{
   text-align: center;
   margin-top: 10px;
 }
+
+
+.song {
+  text-align: center;
+}
+
+.song img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+
+.song img:hover {
+  transform: scale(1.05);
+}
+
+.song img:active {
+  transform: scale(0.95);
+}

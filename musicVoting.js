@@ -1,31 +1,51 @@
 'use strict';
 
-// Voting state
-let votes = {
-  original: 0,
-  cover: 0
-};
+let battles = document.querySelectorAll('.battle');
+let votes = [];
+let currentBattle = 0;
 
-// Grab the images
-const originalImg = document.getElementById('original-img');
-const coverImg = document.getElementById('cover-img');
+// Load saved votes
+let saved = localStorage.getItem('musicVotes');
+if (saved) {
+  votes = JSON.parse(saved);
 
-// Load saved votes from localStorage
-let savedVotes = localStorage.getItem('hurtVotes');
-if (savedVotes) {
-  votes = JSON.parse(savedVotes);
+  if (votes.length !== battles.length) {
+    votes = battles.map(() => ({ original: 0, cover: 0 }));
+  }
+} else {
+  votes = battles.map(() => ({ original: 0, cover: 0 }));
 }
 
-// Voting click handlers
-originalImg.addEventListener('click', () => vote('original'));
-coverImg.addEventListener('click', () => vote('cover'));
+// Attach listeners
+battles.forEach((battle, index) => {
+  let originalImg = battle.querySelector('.original-img');
+  let coverImg = battle.querySelector('.cover-img');
 
-function vote(choice) {
-  votes[choice]++;
-  localStorage.setItem('hurtVotes', JSON.stringify(votes));
+  originalImg.addEventListener('click', () => vote(index, 'original'));
+  coverImg.addEventListener('click', () => vote(index, 'cover'));
+});
 
-  alert(`You voted for ${choice}!  
-Original: ${votes.original} | Cover: ${votes.cover}`);
-  
-  // Optional: Load next battle here
+// Voting function
+function vote(index, choice) {
+  votes[index][choice]++;
+  localStorage.setItem('musicVotes', JSON.stringify(votes));
+
+  // move to next battle
+  currentBattle++;
+
+  if (currentBattle < battles.length) {
+    showBattle(currentBattle);
+  } else {
+    alert('Voting complete! 🎉');
+  }
 }
+
+// Show one battle at a time
+function showBattle(index) {
+  battles.forEach((battle, i) => {
+    battle.style.display = i === index ? 'flex' : 'none';
+  });
+}
+
+// Start first battle
+showBattle(0);
