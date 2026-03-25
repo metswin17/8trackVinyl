@@ -4,6 +4,6 @@ Original songs and other artist's covers of those songs
 
 Voting for the best outcome to determine the favorite version
 
-1st day coded carousel of images of artist's and related item phonograps , 8 track tapes, neon record signs and more
+1st day coded carousel of images of artist's and related item phonographgit add .s , 8 track tapes, neon record signs and more
 
 2nd day added side by side images of the comparable artist's 
