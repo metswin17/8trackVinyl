@@ -4,3 +4,20 @@ Outcome will choose a tallied favorite
 
 The web  will give the user an audio sample of each version to compare
 It will then take the selected choice and tally the results attaining a chosen favorite
+
+
+Domain Modeling 
+
+User - selection 
+
+
+Catalog - Songs  
+
+
+Audio - snippet clips
+
+
+Tallied Winner - favorite song   
+
+
+Link - to order music choice 
