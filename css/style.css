@@ -74,3 +74,13 @@ body{
 .song img:active {
   transform: scale(0.95);
 }
+
+
+.front {
+  z-index: 2;
+}
+
+.back {
+  z-index: 1;
+  opacity: 0.5;
+}

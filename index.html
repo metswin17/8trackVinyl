@@ -20,6 +20,27 @@
 
 <main>
 
+  <div id="battle-selection"></div>
+
+  <h2 id="now-playing">Click Start</h2>
+
+<div class="battle">
+  <img id="original-img" src="img/original.jpg">
+  <img id="cover-img" src="img/cover.jpg">
+</div>
+
+<button id="start-btn">Start Battle</button>
+
+<button id="vote-original">Vote Original</button>
+<button id="vote-cover">Vote Cover</button>
+
+<audio id="original-audio" src="audio/original.mp3"></audio>
+<audio id="cover-audio" src="audio/cover.mp3"></audio>
+
+<video id="record-video" width="300" muted loop>
+  <source src="video/record.mp4" type="video/mp4">
+</video>
+
   <!-- Carousel -->
   <div class="swiper">
     <div class="swiper-wrapper">
@@ -69,7 +90,6 @@
 <div class="swiper-button-prev"></div>
 <div class="swiper-pagination"></div>
 
-</div> <!-- ✅ THIS closes swiper -->
 
 </div> <!-- END SWIPER -->
 
