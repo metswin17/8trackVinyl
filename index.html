@@ -25,8 +25,8 @@
   <h2 id="now-playing">Click Start</h2>
 
 <div class="battle">
-  <img id="original-img" src="img/original.jpg">
-  <img id="cover-img" src="img/cover.jpg">
+  <img id="original-img" src="img/theorioles.jpg">
+  <img id="cover-img" src="img/EllaF.webp">
 </div>
 
 <button id="start-btn">Start Battle</button>
@@ -37,9 +37,29 @@
 <audio id="original-audio" src="audio/original.mp3"></audio>
 <audio id="cover-audio" src="audio/cover.mp3"></audio>
 
-<video id="record-video" width="300" muted loop>
-  <source src="video/record.mp4" type="video/mp4">
-</video>
+
+<!-- YouTube Player (Original) -->
+<!-- YouTube Player (Original) -->
+<!-- ORIGINAL -->
+<iframe
+  id="ytOriginal"
+  width="300"
+  height="200"
+  src="https://www.youtube.com/embed/gJt1xSRmgfQ?enablejsapi=1"
+  frameborder="0"
+  allow="autoplay"
+></iframe>
+
+<!-- COVER -->
+<iframe
+  id="ytCover"
+  width="300"
+  height="200"
+  src="https://www.youtube.com/embed/p597VDvsekc?enablejsapi=1"
+  frameborder="0"
+  allow="autoplay"
+></iframe>
+
 
   <!-- Carousel -->
   <div class="swiper">
@@ -153,6 +173,8 @@
 
 </main>
 
+<script src="https://www.youtube.com/iframe_api"></script>
+
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
@@ -190,6 +212,34 @@ new Swiper('.swiper', {
 </script>
 
 <script src="js/musicVoting.js"></script>
+
+<script>
+  let player;
+  let startTime = 30;
+  let clipLength = 15;
+  
+  
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('ytPlayer');
+  }
+  
+  
+  // Play and stop after 15 seconds
+  function playClip() {
+    player.seekTo(startTime); // go to start
+    player.playVideo();       // play
+  
+  
+    setTimeout(() => {
+      player.pauseVideo();    // stop after 15 sec
+      player.seekTo(startTime); // reset
+    }, clipLength * 1000);
+  }
+  </script>
+  
+  
+  <script src="https://www.youtube.com/iframe_api"></script>
+  
 
 </body>
 </html>

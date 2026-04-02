@@ -63,11 +63,11 @@ startBtn.addEventListener('click', function () {
   coverImg.classList.remove('front');
 
   originalAudio.currentTime = 0;
-  originalAudio.play();
+  playOriginalClip();
 
 });
 
-originalAudio.addEventListener('ended', function () {
+setTimeout(() => {
 
   banner.textContent = "Now Playing: Cover Song";
 
@@ -75,7 +75,7 @@ originalAudio.addEventListener('ended', function () {
   originalImg.classList.remove('front');
 
   coverAudio.currentTime = 0;
-  coverAudio.play();
+  playCoverClip();
 
 });
 
@@ -114,3 +114,36 @@ coverAudio.addEventListener('ended', function () {
 });
 
 
+let originalPlayer;
+let coverPlayer;
+
+const startTime = 30;
+const clipLength = 15;
+
+// YouTube API ready
+
+  originalPlayer = new YT.Player('ytOriginal');
+  coverPlayer = new YT.Player('ytCover');
+}
+
+// Play ORIGINAL clip
+function playOriginalClip() {
+  originalPlayer.seekTo(startTime);
+  originalPlayer.playVideo();
+
+  setTimeout(() => {
+    originalPlayer.pauseVideo();
+    originalPlayer.seekTo(startTime);
+  }, clipLength * 1000);
+}
+
+// Play COVER clip
+function playCoverClip() {
+  coverPlayer.seekTo(startTime);
+  coverPlayer.playVideo();
+
+  setTimeout(() => {
+    coverPlayer.pauseVideo();
+    coverPlayer.seekTo(startTime);
+  }, clipLength * 1000);
+}
