@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,46 +19,20 @@
 
 <main>
 
-  <div id="battle-selection"></div>
-
   <h2 id="now-playing">Click Start</h2>
 
-<div class="battle">
-  <img id="original-img" src="img/theorioles.jpg">
-  <img id="cover-img" src="img/EllaF.webp">
-</div>
+  <button id="start-btn">Start Battle</button>
 
-<button id="start-btn">Start Battle</button>
+  <!-- Clean buttons (no onclick) -->
+  <button id="play-original">Test Original</button>
+  <button id="play-cover">Test Cover</button>
 
-<button id="vote-original">Vote Original</button>
-<button id="vote-cover">Vote Cover</button>
+  <button id="vote-original">Vote Original</button>
+  <button id="vote-cover">Vote Cover</button>
 
-<audio id="original-audio" src="audio/original.mp3"></audio>
-<audio id="cover-audio" src="audio/cover.mp3"></audio>
-
-
-<!-- YouTube Player (Original) -->
-<!-- YouTube Player (Original) -->
-<!-- ORIGINAL -->
-<iframe
-  id="ytOriginal"
-  width="300"
-  height="200"
-  src="https://www.youtube.com/embed/gJt1xSRmgfQ?enablejsapi=1"
-  frameborder="0"
-  allow="autoplay"
-></iframe>
-
-<!-- COVER -->
-<iframe
-  id="ytCover"
-  width="300"
-  height="200"
-  src="https://www.youtube.com/embed/p597VDvsekc?enablejsapi=1"
-  frameborder="0"
-  allow="autoplay"
-></iframe>
-
+  <!-- YouTube Players -->
+  <div id="ytOriginal"></div>
+<div id="ytCover"></div>
 
   <!-- Carousel -->
   <div class="swiper">
@@ -75,105 +48,39 @@
       <div class="swiper-slide"><img src="img/Ray&Al.webp"></div>
       <div class="swiper-slide"><img src="img/tara.jpg"></div>
       <div class="swiper-slide"><img src="img/Beatles.jpg"></div>
-      <div class="swiper-slide"><img src="img/lahiru.jpg"></div>
       <div class="swiper-slide"><img src="img/Elton.jpg"></div>
-      <div class="swiper-slide"><img src="img/anne.jpg"></div>
-      <div class="swiper-slide"><img src="img/linh.jpg"></div>
-      <div class="swiper-slide"><img src="img/mike.jpg"></div>
-      <div class="swiper-slide"><img src="img/andras.jpg"></div>
-      <div class="swiper-slide"><img src="img/Judy.webp"></div>
-      <div class="swiper-slide"><img src="img/8track.jpg"></div>
-      <div class="swiper-slide"><img src="img/NatK.jpg"></div>
-      <div class="swiper-slide"><img src="img/arman.jpg"></div>
-      <div class="swiper-slide"><img src="img/car8.jpg"></div>
-      <div class="swiper-slide"><img src="img/karly.jpg"></div>
-      <div class="swiper-slide"><img src="img/craig.jpg"></div>
-      <div class="swiper-slide"><img src="img/ryan2.jpg"></div>
-      <div class="swiper-slide"><img src="img/mick.jpg"></div>
-      <div class="swiper-slide"><img src="img/juliana.jpg"></div>
-      <div class="swiper-slide"><img src="img/EllaF.webp"></div>
-      <div class="swiper-slide"><img src="img/ryan.jpg"></div>
-      <div class="swiper-slide"><img src="img/johnnyhurt.webp"></div>
-      <div class="swiper-slide"><img src="img/8trac.jpg"></div>
-      <div class="swiper-slide"><img src="img/brett.jpg"></div>
-      <div class="swiper-slide"><img src="img/theorioles.jpg"></div>
-      <div class="swiper-slide"><img src="img/oleg.jpg"></div>
-      <div class="swiper-slide"><img src="img/ninehurt.jpg"></div>
-      <div class="swiper-slide"><img src="img/judy.jpg"></div>
-      <div class="swiper-slide"><img src="img/Lavoe.webp"></div>
-      
+
     </div>
 
-    <!-- controls -->
-    <!-- controls -->
-<div class="swiper-button-next"></div>
-<div class="swiper-button-prev"></div>
-<div class="swiper-pagination"></div>
-
-
-</div> <!-- END SWIPER -->
-
-<section class="battle" data-battle="0">
-  <div class="song original">
-    <img class="original-img" src="img/Ray&Al.webp">
-    <h3>Original</h3>
-  </div>
-  <div class="song cover">
-    <img class="cover-img" src="img/NatK.jpg">
-    <h3>Cover</h3>
-  </div>
-</section>
-
-<section class="battle" data-battle="1">
-  <div class="song original">
-    <img class="original-img" src="img/Judy.webp">
-    <h3>Original</h3>
-  </div>
-  <div class="song cover">
-    <img class="cover-img" src="img/RayCharles.jpg">
-    <h3>Cover</h3>
-  </div>
-</section>
-
-<section class="battle" data-battle="2">
-  <div class="song original">
-    <img class="original-img" src="img/theorioles.jpg">
-    <h3>Original</h3>
-  </div>
-  <div class="song cover">
-    <img class="cover-img" src="img/EllaF.webp">
-    <h3>Cover</h3>
-  </div>
-</section>
-    
-    <section class="battle" data-battle="3">
-      <div class="song original">
-        <img class="original-img" src="img/ninehurt.jpg">
-        <h3>Original</h3>
-      </div>
-      <div class="song cover">
-        <img class="cover-img" src="img/johnnyhurt.webp">
-        <h3>Cover</h3>
-      </div>
-    </section>
-    
-    <section class="battle" data-battle="4">
-      <div class="song original">
-        <img class="original-img" src="img/Beatles.jpg">
-        <h3>Original</h3>
-      </div>
-      <div class="song cover">
-        <img class="cover-img" src="img/Elton.jpg">
-        <h3>Cover</h3>
-      </div>
-    </section>
-
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
   </div>
 
+  <!-- Battles -->
+  <section class="battle" data-battle="0">
+    <div class="song original">
+      <img class="original-img" src="img/Ray&Al.webp">
+      <h3>Original</h3>
+    </div>
+    <div class="song cover">
+      <img class="cover-img" src="img/NatK.jpg">
+      <h3>Cover</h3>
+    </div>
+  </section>
+
+  <section class="battle" data-battle="1">
+    <div class="song original">
+      <img class="original-img" src="img/Judy.webp">
+      <h3>Original</h3>
+    </div>
+    <div class="song cover">
+      <img class="cover-img" src="img/RayCharles.jpg">
+      <h3>Cover</h3>
+    </div>
+  </section>
 
 </main>
-
-<script src="https://www.youtube.com/iframe_api"></script>
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -183,27 +90,16 @@ new Swiper('.swiper', {
   loop: true,
   centeredSlides: true,
   slidesPerView: 3,
-
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false
-  },
-
+  autoplay: { delay: 3000 },
   effect: 'coverflow',
-
   coverflowEffect: {
     rotate: 60,
-    stretch: 0,
-    depth: 200,
-    modifier: 1,
-    slideShadows: false
+    depth: 200
   },
-
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev'
   },
-
   pagination: {
     el: '.swiper-pagination',
     clickable: true
@@ -211,35 +107,12 @@ new Swiper('.swiper', {
 });
 </script>
 
-<script src="js/musicVoting.js"></script>
 
-<script>
-  let player;
-  let startTime = 30;
-  let clipLength = 15;
-  
-  
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('ytPlayer');
-  }
-  
-  
-  // Play and stop after 15 seconds
-  function playClip() {
-    player.seekTo(startTime); // go to start
-    player.playVideo();       // play
-  
-  
-    setTimeout(() => {
-      player.pauseVideo();    // stop after 15 sec
-      player.seekTo(startTime); // reset
-    }, clipLength * 1000);
-  }
-  </script>
-  
-  
-  <script src="https://www.youtube.com/iframe_api"></script>
-  
+
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<!-- Your JS -->
+<script src="js/app.js"></script>
 
 </body>
 </html>
