@@ -5,6 +5,11 @@ console.log('app.js connected');
 // ==============================
 // SETUP
 // ==============================
+if (!window.YT) {
+  let tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.body.appendChild(tag);
+}
 
 // Convert to real array
 const battles = Array.from(document.querySelectorAll('.battle'));
@@ -14,14 +19,21 @@ let votes = [];
 
 const battlesData = [
   {
-    original: "gJt1xSRmgfQ",
-    cover: "p597VDvsekc"
+    original: "gJt1xSRmgfQ", 
+    cover: "ved4B_4DBrc"    
   },
   {
-    original: "gJt1xSRmgfQ",
-    cover: "p597VDvsekc"
+    original: "QJdipZ4_lpc",
+    cover: "QMI1MSw2JCw"
+  },
+  {
+    original: "KczYxdoJJjs",
+    cover: "Up6xS_BiOfY"
   }
-];
+]; 
+
+
+let playersAreReady = false;
 
 
 // ==============================
@@ -46,12 +58,35 @@ let originalPlayer;
 let coverPlayer;
 
 const startTime = 30;
-const clipLength = 15;
+const clipLength = 25;
 
-// IMPORTANT: This must exist EXACTLY like this
+let playersReady = 0;
+
+function onPlayerReady() {
+  playersReady++;
+  console.log("Player ready:", playersReady);
+
+  if (playersReady === 2) {
+    console.log("Both players ready");
+
+    playersAreReady = true;
+  
+    setTimeout(() => {
+      loadBattleVideos(0);
+    }, 500); // safer for refresh timing
+  }
+}
+
 function onYouTubeIframeAPIReady() {
-  originalPlayer = new YT.Player('ytOriginal');
-  coverPlayer = new YT.Player('ytCover');
+  originalPlayer = new YT.Player('ytOriginal', {
+    playerVars: { playsinline: 1 },
+    events: { onReady: onPlayerReady }
+  });
+
+  coverPlayer = new YT.Player('ytCover', {
+    playerVars: { playsinline: 1 },
+    events: { onReady: onPlayerReady }
+  });
 }
 // ==============================
 // VIDEO DATA (YOUR CLIPS GO HERE)
@@ -65,12 +100,12 @@ function onYouTubeIframeAPIReady() {
 function loadBattleVideos(index) {
   const data = battlesData[index];
 
-  originalPlayer.loadVideoById({
+  originalPlayer.cueVideoById({
     videoId: data.original,
     startSeconds: startTime
   });
 
-  coverPlayer.loadVideoById({
+  coverPlayer.cueVideoById({
     videoId: data.cover,
     startSeconds: startTime
   });
@@ -140,28 +175,32 @@ function showBattle(index) {
 // Start first battle
 showBattle(0);
 
-let playersReady = 0;
 
 
-function onPlayerReady() {
-  playersReady++;
 
-  if (playersReady === 2) {
-    setTimeout(() => {
-      loadBattleVideos(0);
-    }, 300);
-  }
-}
-
-
+// ==============================
+// START BUTTON
+// ==============================
 
 document.getElementById('start-btn').addEventListener('click', () => {
+
+  if (!playersAreReady) {
+    console.log("Players not ready yet");
+    return;
+  }
+
   currentBattle = 0;
   showBattle(0);
+
   loadBattleVideos(0);
 
-  playBattleSequence();
+  setTimeout(() => {
+    playBattleSequence();
+  }, 500);
 });
+// ==============================
+// PLAY SEQUENCE
+// ==============================
 
 function playBattleSequence() {
   votingEnabled = false;
@@ -190,6 +229,11 @@ function playBattleSequence() {
   }, clipLength * 1000);
 }
 
+
+// ==============================
+// NEXT BATTLE
+// ==============================
+
 function nextBattle() {
   currentBattle++;
 
@@ -201,7 +245,6 @@ function nextBattle() {
   showBattle(currentBattle);
   loadBattleVideos(currentBattle);
 
-  // small delay so YouTube catches up
   setTimeout(() => {
     playBattleSequence();
   }, 300);
