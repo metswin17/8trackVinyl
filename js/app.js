@@ -22,12 +22,12 @@ const battlesData = [
     cover: "ved4B_4DBrc"    
   },
   {
-    original: "QJdipZ4_lpc",
-    cover: "QMI1MSw2JCw"
+    original: "5rW5vXAVDOg",
+    cover: "5rW5vXAVDOg"
   },
   {
-    original: "KczYxdoJJjs",
-    cover: "Up6xS_BiOfY"
+    original: "C9wp6BRdqZU",
+    cover: "CWbXb7YxLNw"
   }
 ]; 
 
@@ -124,10 +124,10 @@ function loadBattleVideos(index) {
     startSeconds: startTime
   });
 
-  // 🔥 give YouTube time to actually load
+  // 🔥 Give YouTube time to buffer
   setTimeout(() => {
     battleVideoReady = true;
-  }, 1200);
+  }, 1500); // slightly longer = more reliable
 }
 
 // ==============================
@@ -274,16 +274,22 @@ function playBattleSequence() {
 
   votingEnabled = false;
 
-  originalPlayer.seekTo(startTime);
-  originalPlayer.playVideo();
+  // ORIGINAL
+  originalPlayer.loadVideoById({
+    videoId: battlesData[currentBattle].original,
+    startSeconds: startTime
+  });
 
   setTimeout(() => {
     originalPlayer.pauseVideo();
 
+    // COVER
     setTimeout(() => {
-      coverPlayer.seekTo(startTime);
-      coverPlayer.playVideo();
-    }, 300);
+      coverPlayer.loadVideoById({
+        videoId: battlesData[currentBattle].cover,
+        startSeconds: startTime
+      });
+    }, 300); // ✅ THIS WAS MISSING
 
     setTimeout(() => {
       coverPlayer.pauseVideo();
@@ -303,31 +309,30 @@ function playBattleSequence() {
 function nextBattle() {
   currentBattle++;
 
-  if (!originalPlayer || !coverPlayer) {
-    console.log("Players not ready yet");
+  if (currentBattle >= battlesData.length) {
+    console.log("All battles complete");
     return;
   }
 
   votingEnabled = false;
   clearTimeout(window.battleTimer);
 
-  if (originalPlayer && coverPlayer) {
-    originalPlayer.stopVideo();
-    coverPlayer.stopVideo();
-  }
+  // 🔥 STOP old videos
+  originalPlayer.stopVideo();
+  coverPlayer.stopVideo();
 
+  // 🔥 load new battle
   showBattle(currentBattle);
   loadBattleVideos(currentBattle);
 
-  setTimeout(() => {
-    playBattleSequence();
-  }, 1000);
+  // 🔥 WAIT until video is ACTUALLY ready
+  const waitForReady = setInterval(() => {
+    if (battleVideoReady) {
+      clearInterval(waitForReady);
+      playBattleSequence();
+    }
+  }, 300);
 }
- 
 window.addEventListener('DOMContentLoaded', () => {
   battles = Array.from(document.querySelectorAll('.battle'));
 });
-
-// ==============================
-// MUSIC VOTING
-// ==============================
