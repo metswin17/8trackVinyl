@@ -20,7 +20,7 @@
 
   <h2 id="now-playing">Click Start</h2>
 
-  <button id="start-btn">Start Battle</button>
+  <button id="start-btn" disabled>Loading videos...</button>
 
   <!-- Clean buttons (no onclick) -->
   <button id="play-original">Test Original</button>
@@ -59,6 +59,17 @@
   <!-- Battles -->
   <section class="battle" data-battle="0">
     <div class="song original">
+      <img class="original-img" src="img/theorioles.jpg">
+      <h3>Original</h3>
+    </div>
+    <div class="song cover">
+      <img class="cover-img" src="img/EllaF.webp">
+      <h3>Cover</h3>
+    </div>
+  </section>
+
+  <section class="battle" data-battle="1">
+    <div class="song original">
       <img class="original-img" src="img/Ray&Al.webp">
       <h3>Original</h3>
     </div>
@@ -68,11 +79,12 @@
     </div>
   </section>
 
-  <section class="battle" data-battle="1">
+  <section class="battle" data-battle="2">
     <div class="song original">
       <img class="original-img" src="img/Judy.webp">
       <h3>Original</h3>
     </div>
+  
     <div class="song cover">
       <img class="cover-img" src="img/RayCharles.jpg">
       <h3>Cover</h3>
@@ -105,7 +117,6 @@ new Swiper('.swiper', {
   }
 });
 </script>
-
 
 
 

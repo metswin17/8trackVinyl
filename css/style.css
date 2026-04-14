@@ -84,3 +84,12 @@ body{
   z-index: 1;
   opacity: 0.5;
 }
+
+#ytOriginal,
+#ytCover {
+  width: 100%;
+  max-width: 400px;
+  height: 225px;
+  margin: 10px auto;
+  display: block;
+}
